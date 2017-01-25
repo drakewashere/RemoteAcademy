@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="RAAdmin" ng-controller="AdminController as app">
+  <head>
+    <title>Remote.Academy Admin</title>
+    <base href="/admin" target="_blank" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+    <script src="/admin/built/lib/angular-material.min.js"></script>
+    <script src="/admin/built/lib/ng-file-upload/ng-file-upload.min.js"></script>
+    <script src="https://cdn.socket.io/socket.io-1.3.7.js"></script>
+    <script src="/admin/built/app.min.js"></script>
+
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,700,300italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/admin/built/lib/angular-material.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/admin/built/main.css" media="screen">
+
+    <!-- User information from the server, cuts out an API call -->
+    <script>window.rauser = {{{user}}}</script>
+  </head>
+  <body>
+
+    <ra-admin-nav links="app.links"></ra-admin-nav>
+
+    <!-- The individual Angular pages are rendered in here -->
+    <main ng-view></main>
+
+  </body>
+</html>

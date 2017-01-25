@@ -1,0 +1,107 @@
+.labcontainer
+  width: 600px
+  margin: 0 auto
+  position: relative
+
+  transition: width 150ms ease-out
+
+  .inner
+    width: 980px
+    position: absolute
+    left: 0px
+
+article, aside
+  margin-bottom: 70px
+
+article
+  width: 600px
+  padding-top: 30px
+  float: left
+
+
+// Lab Page Structure
+article, aside
+
+  h1
+    text-align: left
+    font-weight: 400
+    letter-spacing: 1px
+
+  section
+    margin-top: 20px
+
+    &:first-of-type
+      margin-top: 10px
+
+    &.experiment, &.submit
+      width: 260px
+      margin: 0 auto
+      margin-top: 40px
+      margin-bottom: 20px
+
+  h2
+    font-size: 13pt
+    font-weight: 100
+    text-align: left
+    color: rgba(255, 255, 255, 0.5)
+
+  .box
+    background-color: $cLabFill
+    border: 2px solid $cLabOuter, 1px solid $cLabInner
+    border-radius: 2px
+    padding: 15px
+    margin-top: 6px
+
+    *
+      color: black
+      font-size: 11pt
+
+    p
+      font-weight: 400
+      line-height: 150%
+
+    &.experiment
+      background-color: $cExperimentFill
+
+    &.stream
+      padding: 10px
+
+    .textbit
+      margin-bottom: 15px
+
+    li
+      margin-left: 30px
+      margin-bottom: 3px
+
+    ul li
+      list-style-type: disc
+
+    ol li
+      list-style-type: decimal
+
+  img
+    border: 1px solid rgba(0, 0, 0, 0.5)
+    display: block
+    margin: 0 auto
+
+  form, p, img
+    margin-top: 15px
+
+
+  // Lab Components
+
+  label
+    font-weight: bold
+
+  textarea
+    width: 100%
+    min-height: 100px
+    display: block
+    margin-top: 8px
+    padding: 10px
+
+  textarea, input
+    outline: none
+    border: 1px solid $cComponentOutline
+    border-radius: 2px
+    box-shadow: inset 0px 1px 3px rgba(0,0,0,0.1)

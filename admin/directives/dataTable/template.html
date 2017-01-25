@@ -1,0 +1,22 @@
+<table class="datatable" cellspacing="0" cellpadding="0">
+  <tr class="head">
+    <th ng-repeat="column in columns"
+        ng-bind="column.label" ng-style="{width: column.width}">
+    </th>
+    <th colspan="{{actions.length}}">Actions</th>
+  </tr>
+  <tr ng-repeat="row in _processed" class="datarow">
+    <td ng-repeat="column in columns">
+      <span ng-bind="row[column.key]"></span>
+    </td>
+    <td ng-repeat="action in actions" class="actionitem"
+        ng-click="runAction($index, row._id)"><span>
+      <md-icon md-icon-set="material-icons" title="{{action.label}}">
+        {{action.icon}}
+      </md-icon>
+    </span></td>
+  </tr>
+  <tr ng-show="_processed.length == 0">
+    <td colspan="{{real_columns.length}}" class="tableEmpty">No Rows Match/td>
+  </tr>
+</table>

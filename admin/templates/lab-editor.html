@@ -1,0 +1,94 @@
+<h1>Lab Editor</h1>
+<md-content class="narrow form">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2><span>Editing: {{lec.lab.title || 'New Lab'}}</span></h2>
+      <span flex></span>
+      <md-button aria-label="Delete Lab"  ng-click="lec.deleteLab()">
+        <md-icon md-icon-set="material-icons">delete forever</md-icon>Delete
+      </md-button>
+      <a href="/lab/{{lec.lab._id}}" target="_new" ng-show="!lec.newLab">
+        <md-button aria-label="Preview Lab">
+          <md-icon md-icon-set="material-icons">pageview</md-icon>Preview
+        </md-button>
+      </a>
+      <md-button aria-label="Save Changes" ng-click="lec.saveChanges()">
+        <md-icon md-icon-set="material-icons">save</md-icon>
+        {{ (lec.newLab) ? "Create Lab" : "Save Changes" }}
+      </md-button>
+    </div>
+    <md-progress-linear md-mode="indeterminate" ng-show="lec.saving">
+    </md-progress-linear>
+  </md-toolbar>
+  <div class="form">
+    <div layout-gt-sm="row">
+      <md-input-container class="md-block" style="width: 350px">
+        <label>Title</label>
+        <input ng-model="lec.lab.title">
+      </md-input-container>
+      <md-input-container class="md-block" style="width: 100%">
+        <label>Subtitle</label>
+        <input ng-model="lec.lab.subtitle">
+      </md-input-container>
+    </div>
+    <h4>Due Date</h4>
+    <div layout-gt-sm="row">
+      <md-input-container class="md-block" style="width: 100%; min-width: 150px" >
+        <label>Month</label>
+        <md-select ng-model="lec.due.month" ng-change="lec.updateTimestamp()">
+          <md-option value="1">January</md-option>
+          <md-option value="2">February</md-option>
+          <md-option value="3">March</md-option>
+          <md-option value="4">April</md-option>
+          <md-option value="5">May</md-option>
+          <md-option value="6">June</md-option>
+          <md-option value="7">July</md-option>
+          <md-option value="8">August</md-option>
+          <md-option value="9">September</md-option>
+          <md-option value="10">October</md-option>
+          <md-option value="11">November</md-option>
+          <md-option value="12">December</md-option>
+        </md-select>
+      </md-input-container>
+      <md-input-container class="md-block" style="width: 100%; max-width: 150px">
+        <label>Day</label>
+        <md-select ng-model="lec.due.day" ng-change="lec.updateTimestamp()">
+          <md-option value="{{value}}" ng-repeat="value in lec.dayrange">
+            {{value}}
+          </md-option>
+        </md-select>
+      </md-input-container>
+      <md-input-container class="md-block" style="width: 100%">
+        <label>Year</label>
+        <input ng-model="lec.due.year" ng-change="lec.updateTimestamp()">
+      </md-input-container>
+      <md-input-container class="md-block" style="width: 100%">
+        <label>Time</label>
+        <md-select ng-model="lec.due.time" ng-change="lec.updateTimestamp()">
+          <md-option ng-repeat="time in lec.times" value="{{time.value}}">
+            {{time.name}}
+          </md-option>
+        </md-select>
+      </md-input-container>
+    </div>
+    <ra-admin-link-input
+      collection="classes" ids="lec.lab.classes"
+      title="Visible to classes"
+      message="Adding this lab to a class will make it visible to all students of that class">
+    </ra-admin-link-input>
+    <ra-admin-accordion class="list-section"
+      has-header="true" header-title="Lab Notebook Sections"
+      header-actions="lec.sectionHeaderActions">
+      <ra-admin-accordion-item ng-repeat="(si, section) in lec.lab.sections"
+        lab-id="{{lec.lab._id}}"
+        name="section.name" index="{{si}}" actions="lec.sectionActions">
+        <ra-admin-lab-section-editor section="section" index="{{si}}">
+        </ra-admin-lab-section-editor>
+      </ra-admin-accordion-item>
+      <h4 ng-if="lec.lab.sections.length == 0">No sections yet</h4>
+    </ra-admin-accordion>
+    <md-button class="md-raised md-primary save" ng-click="lec.saveChanges()">
+      {{ (lec.newLab) ? "Create Lab" : "Save Changes" }}
+    </md-button>
+  </div>
+</md-content>

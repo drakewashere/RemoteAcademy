@@ -1,0 +1,24 @@
+<div class="center">
+
+  <ra-header banner="Register your Account"></ra-header>
+
+  <form class="homepageform">
+    <label for="name">Full Name (optional)</label>
+    <input type="text" name="name" ng-model="rac.name" placeholder="Ferd Berfel">
+
+    <label for="email">Email Address</label>
+    <input type="email" name="email" ng-model="rac.email">
+
+    <label class="checkbox">
+      <input type="checkbox" name="alerts" ng-model="rac.labNotify">
+      Send me alerts about labs
+    </label>
+
+    <button type="button" name="button" class="minibutton" ng-click="rac.submit()">
+      Continue
+    </button>
+  </form>
+
+</div>
+
+<ra-footer></ra-footer>

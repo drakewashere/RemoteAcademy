@@ -1,0 +1,173 @@
+$formWidth: 350px
+$formBreathingRoom: 45px
+
+.center.landing
+
+  *
+    text-align: center
+    margin: 35px 0
+    line-height: 150%
+
+  img, button
+    display: block
+    margin: 0 auto
+
+  button
+    margin-top: 45px
+
+
+.homepagebutton, a.homepagebutton
+  color: white
+  text-shadow: 0px 1px 1px rgba(0,0,0,0.5)
+  font-size: 12pt
+  text-align: center
+
+  min-width: 260px
+  height: 44px
+  line-height: 40px
+  box-shadow: 0px 2px 1px rgba(0,0,0,0.25)
+  cursor: pointer
+  outline: none
+
+  background: $cBrandFill /* Old browsers */
+  background: -moz-linear-gradient(left, #3b6150 0%, #498367 45%, #498367 55%, #3b6150 100%) /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, #3b6150 0%,#498367 45%,#498367 55%,#3b6150 100%) /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #3b6150 0%,#498367 45%,#498367 55%,#3b6150 100%)
+
+  border: 1px solid $cBrandBorder /* Old browsers */
+  -moz-border-image: -moz-linear-gradient(left, #179766 0%, #00ff9c 50%, #179766 100%) /* FF3.6-15 */
+  -webkit-border-image: -webkit-linear-gradient(left, #179766 0%,#00ff9c 50%,#179766 100%) /* Chrome10-25,Safari5.1-6 */
+  border-image: linear-gradient(to right, #179766 0%,#00ff9c 50%,#179766 100%)
+  border-image-slice: 1
+
+  &:hover
+    -moz-border-image: inherit
+    -webkit-border-image: inherit
+    border-image: inherit
+
+  &.failed,&.live
+    border: 1px solid $cFailedBorder /* Old browsers */
+    -moz-border-image: -moz-linear-gradient(left, #913A36 0%, $cFailedBorder 50%, #913A36 100%) /* FF3.6-15 */
+    -webkit-border-image: -webkit-linear-gradient(left, #913A36 0%,$cFailedBorder 50%,#913A36 100%) /* Chrome10-25,Safari5.1-6 */
+    border-image: linear-gradient(to right, #913A36 0%,$cFailedBorder 50%,#913A36 100%)
+    border-image-slice: 1
+
+  &.failed
+    background: none
+    font-style: italic
+
+  &.live
+    background: $cLiveFill /* Old browsers */
+    background: -moz-linear-gradient(left, #62373A 0%, #AD4141 45%, #AD4141 55%, #62373A 100%) /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, #62373A 0%,#AD4141 45%,#AD4141 55%,#62373A 100%) /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, #62373A 0%,#AD4141 45%,#AD4141 55%,#62373A 100%)
+
+    &:hover
+      border: 1px solid $cFailedBorder
+
+  &.submit
+    border: 1px solid $cSubmitStroke /* Old browsers */
+    -moz-border-image: -moz-linear-gradient(left, #56638C 0%, #8ABDFF 50%, #56638C 100%) /* FF3.6-15 */
+    -webkit-border-image: -webkit-linear-gradient(left, #56638C 0%,#8ABDFF 50%,#56638C 100%) /* Chrome10-25,Safari5.1-6 */
+    border-image: linear-gradient(to right, #56638C 0%,#8ABDFF 50%,#56638C 100%)
+    border-image-slice: 1
+
+    background: $cSubmitFill /* Old browsers */
+    background: -moz-linear-gradient(left, #3E4A70 0%, #4B71A2 45%, #4B71A2 55%, #3E4A70 100%) /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, #3E4A70 0%,#4B71A2 45%,#4B71A2 55%,#3E4A70 100%) /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, #3E4A70 0%,#4B71A2 45%,#4B71A2 55%,#3E4A70 100%)
+
+    &:hover
+      border: 1px solid $cSubmitStroke
+
+  &.waiting
+    animation-name: buttonPulse
+    animation-duration: 1.5s
+    animation-iteration-count: infinite
+    animation-direction: alternate
+    animation-timing-function: ease-in-out
+
+
+
+/* The animation code */
+@keyframes buttonPulse
+    from
+      border: 1px solid #88B881
+      background: #3F5542
+
+    to
+      border: 1px solid #515554
+      background: #303836
+
+
+
+.minibutton
+  background: none
+  border: none
+  width: 100%
+  height: 40px
+  line-height: 40px
+  color: white
+  font-size: 14pt
+  text-align: center
+  cursor: pointer
+  letter-spacing: 1px
+
+  &::after
+    content: "\00BB"
+
+  &.left
+    text-align: left
+
+  &[disabled]
+    cursor: not-allowed
+    opacity: 0.57
+
+.homepageform input:not([type='checkbox']), input.homepagefield:not([type='checkbox'])
+  width: 100%
+  display: block
+  height: 40px
+  padding: 0 10px
+  font-size: 11pt
+
+  background-color: rgba(255,255,255,0.1)
+  border: 1px solid #ddd
+  border-radius: 2px
+  margin-bottom: 25px
+
+  &.search
+    width: 400px
+    margin: 0 auto
+    margin-top: 30px
+
+.homepageform
+  width: $formWidth
+  margin: $formBreathingRoom auto
+
+  .checkbox
+    text-align: center
+    font-size: 10pt
+    text-transform: uppercase
+    margin-bottom: 25px
+
+    input
+      margin-right: 5px
+
+  label
+      font-size: 9pt
+      text-transform: uppercase
+      letter-spacing: 1px
+      display: block
+      margin: 20px 0px 6px 1px
+
+  .homepagebutton
+    display: block
+    margin: 0 auto
+    margin-top: $formBreathingRoom
+
+    &.wide
+      min-width: $formWidth
+
+    &.submit
+      width: 180px
+      float: right

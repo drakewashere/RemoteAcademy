@@ -1,0 +1,4 @@
+PassengerAppType node
+PassengerAppRoot /home/main/sites/remote.academy/
+SetEnv NODE_ENV production
+SetEnv NODE_PATH /usr/local/lib/node_modules

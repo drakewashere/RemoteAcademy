@@ -1,0 +1,37 @@
+<md-dialog aria-label="Add New Link" ng-cloak style="min-width: 500px">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Add New Link</h2>
+      <span flex></span>
+      <md-button class="md-icon-button" ng-click="dlg.cancel()">
+        <md-icon md-icon-set="material-icons" aria-label="Close dialog">close</md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-dialog-content>
+    <div class="md-dialog-content">
+      <p>{{dlg.message}}</p><br/>
+      <form ng-submit="$event.preventDefault()">
+        <md-autocomplete
+            md-selected-item="dlg.selectedItem"
+            md-search-text="dlg.searchText"
+            md-items="item in dlg.search(dlg.searchText)"
+            md-item-text="item.name || item.title"
+            md-min-length="0"
+            placeholder="Search by name">
+          <md-item-template>
+            <span md-highlight-text="dlg.searchText" md-highlight-flags="^i">
+              {{item.name || item.title}}
+            </span>
+          </md-item-template>
+          <md-not-found>
+            No classes matching "{{dlg.searchText}}" were found.
+          </md-not-found>
+        </md-autocomplete>
+      </form>
+    </div>
+  </md-dialog-content>
+  <md-dialog-actions>
+    <md-button aria-label="Finished" ng-click="dlg.finish($event)">Finished</md-button>
+  </md-dialog-actions>
+</md-dialog>

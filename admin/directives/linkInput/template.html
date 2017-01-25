@@ -1,0 +1,22 @@
+<md-list ng-cloak>
+  <md-subheader class="md-no-sticky">
+    <div layout-gt-sm="row" layout-align="center center">
+      <p>{{title}}</p>
+      <span flex></span>
+      <md-button aria-label="Add Link" class="md-secondary" ng-click="add()">
+        <md-icon md-icon-set="material-icons">add</md-icon> Add New
+      </md-button>
+    </div>
+  </md-subheader>
+  <md-list-item ng-repeat="($index, link) in links" data-id="{{link._id}}">
+    <p>{{ link.name || link.title }}</p>
+    <span flex></span>
+    <md-button
+        aria-label="Delete Link" class="md-secondary md-icon-button"
+        ng-click="delete($index)">
+      <md-icon md-icon-set="material-icons">delete forever</md-icon>
+    </md-button>
+  </md-list-item>
+</md-list>
+<h4 ng-if="!links">Loading {{collection}}</h4>
+<h4 ng-if="links && links.length == 0">No links to {{collection}}</h4>

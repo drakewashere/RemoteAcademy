@@ -1,0 +1,42 @@
+<div class="center animate" style="min-height: 260px">
+
+  <ra-header banner="Find Your Class"></ra-header>
+
+  <input type="search" name="text" class="homepagefield search"
+         placeholder="Section ID, Class Name or Professor"
+         ng-model="rac.query" ng-model-options="{ debounce: 300 }">
+
+  <!--
+  4 States:
+    * Start) Waiting for user input
+    * Loading) Waiting for server response
+    * Empty) Server returned no results
+    * Ideal) Server returned one or more results
+  -->
+
+  <img src="/img/loader.svg" class="loader" ng-show="csc.loading"/>
+
+  <p ng-show="csc.empty" class="empty">No Classes Found</p>
+
+  <!-- Display the resulting list of classes -->
+  <ul class="classlist" ng-show="csc.classes.length > 0">
+    <li ng-repeat="class in csc.classes">
+
+      <h2 ng-bind="class.name"></h2>
+      <h4 ng-bind="class.professor"></h4>
+
+      <div class="sections">
+        <label class="checkbox" ng-repeat="section in class.sections">
+          <input type="checkbox" ng-checked="csc.selected == section.id"
+                 ng-click="csc.select(class, section)">
+          <b ng-bind="section.name"></b>
+          <span ng-bind="section.timeslot"></span>
+        </label>
+      </div>
+
+    </li>
+  </ul>
+
+</div>
+
+<ra-footer></ra-footer>

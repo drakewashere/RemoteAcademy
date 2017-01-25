@@ -1,0 +1,71 @@
+<h1>Simulate a live LabBox</h1>
+<h4 class="red">Never do this on an active experiment</h4>
+
+<hr/>
+
+<div layout-gt-xs="row" class="mainbox">
+  <md-input-container>
+    <label>LabBox Identifier</label>
+    <input ng-model="rtc.boxid">
+  </md-input-container>
+  <md-button class="md-raised md-primary" ng-click="rtc.lookup(rtc.boxid)">Find LabBox</md-button>
+</div>
+
+<hr/>
+
+<div ng-show="rtc.hasExperiment === false">
+  <h3 class="red">This LabBox is not attached to any Experiment</h3>
+  You can attach an imaginary LabBox ID to an experiment in the Experiments tab.
+</div>
+
+<div ng-show="rtc.hasExperiment === true">
+  <h1>Found experiment: {{rtc.experiment.name}}</h1>
+  <ul class="discreetList">
+    <li ng-repeat="(name, device) in rtc.experiment.setup">
+      <h4>Device: {{name}}</h4>
+      <ul class="discreetList">
+        <li ng-repeat="input in device.inputs">
+          <span>{{input.id}} = {{input.value}}</span>
+        </li>
+      </ul><br/>
+      <ul class="discreetList">
+        <li ng-repeat="output in device.outputs">
+          <h4>Output: {{output.id}}</h4>
+          <div layout-gt-sm="row" class="outputrow">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Generation Option</label>
+              <md-select ng-model="output.generation">
+                <md-option value="random" default>Random Values</md-option>
+                <md-option value="sine1000">1s Sine Wave</md-option>
+                <md-option value="sine100">100ms Sine Wave</md-option>
+                <md-option value="set">Set Value</md-option>
+              </md-select>
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Sampling Period (ms)</label>
+              <input ng-model="output.period">
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Set Value</label>
+              <input ng-model="output.set" ng-disabled="output.generation != 'set'">
+            </md-input-container>
+          </div>
+      </ul>
+    </li>
+  </ul>
+  <br/>
+  <div layout-gt-xs="row" class="mainbox">
+    <md-input-container>
+      <label>WS Send Period (ms)</label>
+      <input ng-model="rtc.sendrate">
+    </md-input-container>
+    <md-button class="md-raised md-primary" ng-click="rtc.toggleSimulation(rtc.boxid)">
+      {{rtc.simulating ? "Stop Simulation" : "Start Simulating LabBox"}}
+    </md-button>
+  </div><br/>
+  <h4>Status: {{
+    !rtc.simulating ? "Waiting to Inject Simulation" :
+    rtc.collecting ? 'Collecting Data' :
+    rtc.connected ? 'Connected to Client' : 'Waiting for Client'
+  }}</h4>
+</div>

@@ -1,0 +1,16 @@
+<h1>Lab Viewer</h1>
+<md-content class="form">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <md-button aria-label="Search">
+        <md-icon md-icon-set="material-icons">search</md-icon>Search
+      </md-button>
+      <span flex></span>
+      <md-button aria-label="Add New" ng-click="lec.newLab()">
+        <md-icon md-icon-set="material-icons">add circle</md-icon>Add New Lab
+      </md-button>
+    </div>
+  </md-toolbar>
+  <ra-admin-data-table data="lec.data" columns="lec.columns" actions="lec.actions">
+  </ra-admin-data-table>
+</md-content>

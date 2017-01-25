@@ -1,0 +1,49 @@
+// This is technically part of the lab page
+
+aside button, .link
+  display: block
+  min-width: 150px
+  background-color: $cExperimentButton
+  border: 1px solid #8aa
+  border-radius: 4px
+  box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.5)
+  cursor: pointer
+  outline: none
+
+  &:hover
+    background-color: $cExperimentHover
+
+  &.off
+    background-color: $cExperimentDisabled
+
+
+aside
+  width: 340px
+  float: right
+  padding-top: 59px
+
+  img
+    width: 320px
+
+  label
+    display: block
+    margin-bottom: 5px
+
+  section
+    margin-top: 20px
+
+  [data-input]
+    margin-bottom: 20px
+
+    &:last-child
+      margin-bottom: 0px
+
+    span
+      padding-left: 6px
+      position: relative
+      bottom: 4px
+
+
+  input[type="range"]
+    width: calc(100% - 40px)
+    margin: 7px 0

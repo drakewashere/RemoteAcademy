@@ -1,0 +1,86 @@
+<md-card ng-repeat="(fi, field) in section.content">
+  <div layout-gt-sm="row" class="header">
+    <md-icon class="header-icon" md-icon-set="material-icons">{{
+      (field.type == 'text') ?        'text_fields' :
+      (field.type == 'image') ?       'camera_alt'  :
+      (field.type == 'shortanswer') ? 'input' :
+      'view_list'
+    }}</md-icon>
+    <h5 class="title">{{
+      (field.type == 'text') ?        'Instructions / Static Text' :
+      (field.type == 'image') ?       'Image / Diagram'  :
+      (field.type == 'shortanswer') ? 'Input: Text' :
+      'Input: Table'
+    }}</h5>
+    <span flex></span>
+    <md-button aria-label="Move Up" class="md-icon-button" ng-if="fi > 0"
+        ng-click="move_up(fi)">
+      <md-icon md-icon-set="material-icons">arrow_upwards</md-icon>
+    </md-button>
+    <md-button aria-label="Move Down" class="md-icon-button"
+        ng-click="move_down(fi)" ng-if="fi < section.content.length - 1">
+      <md-icon md-icon-set="material-icons">arrow_downwards</md-icon>
+    </md-button>
+    <md-button aria-label="Delete Item" class="md-icon-button"
+        ng-click="delete(fi)">
+      <md-icon md-icon-set="material-icons">delete forever</md-icon>
+    </md-button>
+  </div>
+
+  <!-- Text Editor -->
+  <div class="fields" ng-if="field.type == 'text'">
+    <textarea ng-model="field.content" placeholder="Lorem Ipsum Dolor"></textarea>
+  </div>
+
+  <!-- Image Editor -->
+  <div class="fields" ng-if="field.type == 'image'">
+    <div layout-gt-sm="row" class="editor-row">
+      <ra-admin-image-upload lab-id="{{labId}}" link="field.content">
+      </ra-admin-image-upload>
+    </div>
+  </div>
+
+  <!-- Short Answer Question Editor -->
+  <div class="fields" ng-if="field.type == 'shortanswer'">
+    <div layout-gt-sm="row" class="editor-row">
+      <md-input-container class="md-block" style="width: 200px">
+        <label>Question Name / ID</label>
+        <input ng-model="field.name"/>
+      </md-input-container>
+      <md-input-container class="md-block"  style="width: 100%">
+        <label>Prompt</label>
+        <input ng-model="field.label"/>
+      </md-input-container>
+    </div>
+  </div>
+
+</md-card>
+
+<!-- Add new section-->
+<md-fab-toolbar md-direction="left">
+  <md-fab-trigger class="align-with-text">
+    <md-button aria-label="menu" class="md-fab md-primary">
+      <md-icon md-icon-set="material-icons">add</md-icon>
+    </md-button>
+  </md-fab-trigger>
+  <md-toolbar>
+    <md-fab-actions class="md-toolbar-tools">
+      <md-button aria-label="Instructions / Static Text"
+          ng-click="add('text')">
+        <md-icon md-icon-set="material-icons">text_fields</md-icon> Static Text
+      </md-button>
+      <md-button aria-label="Image / Diagram"
+          ng-click="add('image')">
+        <md-icon md-icon-set="material-icons">camera_alt</md-icon> Image
+      </md-button>
+      <md-button aria-label="Input: Text"
+          ng-click="add('shortanswer')">
+        <md-icon md-icon-set="material-icons">input</md-icon> Text Input
+      </md-button>
+      <md-button aria-label="Input: Table"
+          ng-click="add('table')">
+        <md-icon md-icon-set="material-icons">view_list</md-icon> Data Table Input
+      </md-button>
+    </md-fab-actions>
+  </md-toolbar>
+</md-fab-toolbar>

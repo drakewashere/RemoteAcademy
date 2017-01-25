@@ -1,0 +1,41 @@
+.datatable
+  table-layout: fixed
+  width: 100%
+  border: 1px solid #EAE200
+  background-color: white
+  margin-top: 8px
+  max-height: 300px
+
+  tr
+    height: 28px
+
+  tr.head
+    background-color: #FCFCEF
+
+    th
+      color: #6D6D6D
+      font-size: 10pt
+      font-weight: 400
+      border-bottom: 1px solid rgba(151, 151, 151, .13)
+
+  .tableEmpty
+    text-align: center
+    padding: 20px 0
+    font-style: italic
+
+  .datarow td
+    padding: 0 10px
+    border-left: 1px solid #EEEEE3
+    border-bottom: 1px solid #EEEEE3
+
+    &:first-child
+      border-left: none
+
+  .head .action, .datarow .action
+    width: 25px
+    padding: 0 6px
+    color: rgba(0, 0, 0, 0.5)
+    cursor: pointer
+
+    &:hover
+      color: black

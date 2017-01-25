@@ -1,0 +1,36 @@
+<div class="center footeroffset">
+
+  <ra-header banner="Welcome, {{(app.user.fullname || app.user.username)|firstname}}">
+  </ra-header>
+
+  <img src="/img/loader.svg" class="loader" ng-show="llc.loading"/>
+
+  <p ng-show="!llc.loading && llc.classes.length == 0" class="empty">
+    No Upcoming Labs! Whee!
+  </p>
+
+  <!-- Display the user's active labs -->
+  <section ng-hide="llc.loading" ng-repeat="class in llc.classes" class="classsection">
+    <h1 class="classtitle" ng-bind="class.name"></h1>
+
+    <h4 class="classnolabs" ng-if="class.labs.length == 0">No Upcoming Labs</h4>
+
+    <ul class="classlist lablist" ng-if="class.labs.length > 0">
+      <li ng-repeat="lab in class.labs" ng-click="llc.open(lab['_id'])">
+        <h2 ng-bind="lab.title + ': ' + lab.subtitle"></h2>
+        <div>
+          <span class="status"
+            ng-bind="(lab.completion) ? ((lab.completion == 1) ? 'Finished!' : 'In Progress.') : 'Not Started.'">
+          </span>
+          <div class="due" ng-style="{color: (lab.due | dueColor)}">
+            Due
+            <span ng-bind="lab.due | relativeDate"></span>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+</div>
+
+<ra-footer></ra-footer>

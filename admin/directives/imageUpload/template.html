@@ -1,0 +1,20 @@
+<div ng-model="file" class="imageUpload"
+    ngf-drop ngf-select ngf-multiple="false" ngf-allow-dir="false"
+    ngf-drag-over-class="'dragover'"class="drop-box"
+    accept="image/*" ngf-pattern="'image/*'">
+  <div ng-show="!uploading && !link" class="empty">
+    Drop an image here or click to upload
+  </div>
+  <div ng-show="!uploading && link" class="uploaded">
+    <div layout-gt-sm="row" class="editor-row">
+      <img src="{{link}}" alt="Uploaded Image" />
+      <p>Drop or click here to replace this image</p>
+    </div>
+  </div>
+  <div ng-show="uploading" class="uploading">
+    <md-progress-circular
+       md-mode="indeterminate" md-diameter="30px"
+    ></md-progress-circular>
+    <p>Uploading File</p>
+  </div>
+</div>
