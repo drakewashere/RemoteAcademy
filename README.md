@@ -1,6 +1,10 @@
 # Remote.Academy
 ### Rensselaer Polytechnic Institute
+### Sponsored by RPI Physics Department and Rensselaer Center for Open Source Software
+### Hosted at http://remoteacademy.phys.rpi.edu/ 
+### in collaboration with RPI DOTCIO and Office of Undergraduate Education
 Originally created by: *Miles Konstantin, Osvaldo Rosado and Keaton Brandt*
+Currently maintained by: *Karl Nasrallah, Cole Baxter, Zoran Lalvani, Harrison Lee, Richi Young*
 ***
 
 ## Running RemoteAcademy
